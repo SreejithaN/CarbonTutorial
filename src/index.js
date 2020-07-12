@@ -13,6 +13,10 @@ import 'core-js/modules/es6.string.trim';
 import 'core-js/modules/es7.object.values';*/
 const client = new ApolloClient({
   uri: "https://api.github.com/graphql",
+  onError: ({ networkError, graphQLErrors }) => {
+    console.log('graphQLErrors', graphQLErrors)
+    console.log('networkError', networkError)
+  },
   headers: {
     authorization: `Bearer ${process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN}`,
   },
